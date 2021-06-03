@@ -22,10 +22,3 @@ Route::post('/users', [UserApiController::class, 'store']);
 Route::get('/users/{id}', [UserApiController::class, 'show']);
 Route::put('/users/{id}', [UserApiController::class, 'update']);
 Route::delete('/users/{id}', [UserApiController::class, 'destroy']);
-
-// Categories
-Route::get('/categories', [CategoryApiController::class, 'index']);
-Route::post('/categories', [CategoryApiController::class, 'store']);
-Route::get('/categories/{id}', [CategoryApiController::class, 'show']);
-Route::put('/categories/{id}', [CategoryApiController::class, 'update']);
-Route::delete('/categories/{id}', [CategoryApiController::class, 'destroy']);
