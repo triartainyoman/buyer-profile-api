@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Interest;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -36,6 +38,22 @@ class UserController extends Controller
     public function destroy($id) {
         $user = User::find($id);
         $user->delete();
+        return redirect('/users');
+    }
+
+    public function userInterests(Request $request, $id) {
+        $interests = Interest::with(['category', 'user'])->where('user_id', $request->id)->get();
+        return view('users.interests', compact(['interests', 'id']));
+        // return $interests;
+    }
+
+    public function createUserInterest($id) {
+        $categories = Category::all();
+        return view('users.createInterest', compact(['id', 'categories']));
+    }
+
+    public function storeUserInterest(Request $request, $id) {
+        Interest::create($request->all());
         return redirect('/users');
     }
 }

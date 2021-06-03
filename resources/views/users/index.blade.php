@@ -24,7 +24,8 @@
       <td>{{$user->gender}}</td>
       <td>{{$user->image_url}}</td>
       <td>
-        <a href="/users/{{$user->id}}/edit">Edit</a>
+        <a href="/users/{{$user->id}}/edit">Edit</a><br><br>
+        <a href="/users/{{$user->id}}/interests">Interests</a><br><br>
         <form action="/users/{{$user->id}}" method="POST">
         @method('delete')
         @csrf
